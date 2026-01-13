@@ -172,7 +172,7 @@ extension DataCleaner where Self: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
         actionSheetController.addAction(cancelAction)
 
-        let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { _ in
             NFX.sharedInstance().clearOldData()
             then()
         }

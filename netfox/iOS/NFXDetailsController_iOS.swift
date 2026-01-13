@@ -130,7 +130,7 @@ class NFXDetailsController_iOS: NFXDetailsController, MFMailComposeViewControlle
         scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         scrollView.autoresizesSubviews = true
         scrollView.backgroundColor = UIColor.clear
-        
+
         var textView: UITextView
         textView = UITextView()
         textView.frame = CGRect(x: 20, y: 20, width: scrollView.frame.width - 40, height: scrollView.frame.height - 20);
@@ -142,15 +142,16 @@ class NFXDetailsController_iOS: NFXDetailsController, MFMailComposeViewControlle
         textView.sizeToFit()
         textView.isUserInteractionEnabled = true
         textView.delegate = self
+        textView.isScrollEnabled = false
         scrollView.addSubview(textView)
 
         let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(NFXDetailsController_iOS.copyLabel))
         textView.addGestureRecognizer(lpgr)
-        
+
         var moreButton: UIButton
         moreButton = UIButton.init(frame: CGRect(x: 20, y: textView.frame.maxY + 10, width: scrollView.frame.width - 40, height: 40))
         moreButton.backgroundColor = UIColor.NFXGray44Color()
-        
+
         if ((forView == EDetailsView.request) && (selectedModel.requestBodyLength > 1024)) {
             moreButton.setTitle("Show request body", for: .init())
             moreButton.addTarget(self, action: #selector(NFXDetailsController_iOS.requestBodyButtonPressed), for: .touchUpInside)
@@ -162,11 +163,11 @@ class NFXDetailsController_iOS: NFXDetailsController, MFMailComposeViewControlle
             moreButton.addTarget(self, action: #selector(NFXDetailsController_iOS.responseBodyButtonPressed), for: .touchUpInside)
             scrollView.addSubview(moreButton)
             scrollView.contentSize = CGSize(width: textView.frame.width, height: moreButton.frame.maxY + 16)
-            
+
         } else {
             scrollView.contentSize = CGSize(width: textView.frame.width, height: textView.frame.maxY + 16)
         }
-        
+
         return scrollView
     }
     
