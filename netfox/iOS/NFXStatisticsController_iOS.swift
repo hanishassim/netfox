@@ -26,7 +26,7 @@ class NFXStatisticsController_iOS: NFXStatisticsController {
         view.addSubview(scrollView)
         
         textLabel.frame = CGRect(x: 20, y: 20, width: scrollView.frame.width - 40, height: scrollView.frame.height - 20);
-        textLabel.font = UIFont.NFXFont(size: 13)
+        textLabel.font = UIFont.NFXFont(size: 14)
         textLabel.textColor = UIColor.NFXGray44Color()
         textLabel.numberOfLines = 0
         textLabel.sizeToFit()
